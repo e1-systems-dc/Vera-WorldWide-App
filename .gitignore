@@ -1,0 +1,19 @@
+node_modules
+.DS_Store
+.env
+.env.local
+dist
+coverage
+
+backend/node_modules
+
+eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)".pubnode_modules
+.env
+.env.local
+.DS_Store
+dist
+coverage
+backend/firebase-key.json
+backend/.env
+.env

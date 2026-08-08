@@ -1,0 +1,9 @@
+export const CONTINENTS = [
+  { id: "africa", name: "Africa" },
+  { id: "asia", name: "Asia" },
+  { id: "europe", name: "Europe" },
+  { id: "north-america", name: "North America" },
+  { id: "south-america", name: "South America" },
+  { id: "oceania", name: "Oceania" },
+  { id: "antarctica", name: "Antarctica" }
+];
