@@ -68,7 +68,7 @@ export default function TutorChat({ setView, userProfile, lesson }) {
     
     try {
       const voiceId = isBoss ? 'onyx' : 'nova'; 
-      const response = await fetch('http://localhost:3000/api/tts', {
+      const response = await fetch('https://vera-worldwide-app.onrender.com/api/tts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, voiceId })
@@ -118,7 +118,7 @@ export default function TutorChat({ setView, userProfile, lesson }) {
     setIsThinking(true);
 
     try {
-      const response = await fetch('http://localhost:3000/api/chat', {
+const response = await fetch('https://vera-worldwide-app.onrender.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

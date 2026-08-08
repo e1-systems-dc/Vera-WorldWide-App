@@ -31,7 +31,7 @@ export default function PlacementQuiz({ setView, userProfile, setUserProfile }) 
     setHasStarted(true);
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/api/placement`, {
+      const res = await fetch(`https://vera-worldwide-app.onrender.com/api/placement`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

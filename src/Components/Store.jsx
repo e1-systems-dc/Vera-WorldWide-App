@@ -9,7 +9,7 @@ export default function Store({ setView, userProfile }) {
   const handleCheckout = async (tier) => {
     setLoadingTier(tier);
     try {
-      const response = await fetch('http://localhost:3000/api/checkout', {
+      const response = await fetch('https://vera-worldwide-app.onrender.com/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tier, userId: userProfile?.uid || 'local-user' })

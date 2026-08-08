@@ -5,7 +5,7 @@
 ---
 
 ## 1. BASE URL
-* **Development:** `http://localhost:3000/api`
+* **Development:** `https://vera-worldwide-app.onrender.com/api/`
 * **Production:** (To be determined upon backend hosting, e.g., Render or Heroku)
 
 ---

@@ -14,7 +14,7 @@ VITE_FIREBASE_PROJECT_ID=vera-worldwide
 VITE_FIREBASE_STORAGE_BUCKET=vera-worldwide.appspot.com
 VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 VITE_FIREBASE_APP_ID=your_app_id
-VITE_BACKEND_URL=http://localhost:3000
+VITE_BACKEND_URL=https://vera-worldwide-app.onrender.com
 
 **Backend (`backend/.env`):**
 PORT=3000
