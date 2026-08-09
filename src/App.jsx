@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // --- COMPONENT IMPORTS ---
 import LandingPage from './Components/LandingPage';
@@ -152,5 +153,10 @@ export default function App() {
     }
   };
 
-  return <>{renderView()}</>;
+  return (
+    <>
+      {renderView()}
+      <SpeedInsights />
+    </>
+  );
 }
