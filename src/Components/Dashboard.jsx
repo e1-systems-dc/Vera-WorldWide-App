@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Flame, Zap, Hexagon, Play, Lock, Crown, ShieldAlert, Map, Settings, RefreshCw, Globe, BookOpen, Gamepad2 } from 'lucide-react';
+import LessonPath from './LessonPath'; 
 
 export default function Dashboard({ setView, userProfile, onSelectLesson }) {
+  
   const [showSettings, setShowSettings] = useState(false);
-
   const sparks = userProfile?.sparks || 0;
   const energy = userProfile?.energy || 5;
   const streak = userProfile?.streak || 0;
@@ -15,7 +16,7 @@ export default function Dashboard({ setView, userProfile, onSelectLesson }) {
   const getSyllabus = (targetDialect) => {
     const regionMap = {
       "Moroccan Darija": { region: "Morocco", boss: "The Carpet Vendor", focus: "Medina navigation and haggling." },
-      "Colombian Spanish": { region: "Bogotá", boss: "The Lost Luggage", focus: "Airport navigation and TransMilenio." },
+      "Colombian Spanish": { region: "Bogot", boss: "The Lost Luggage", focus: "Airport navigation and TransMilenio." },
       "Tokyo Japanese": { region: "Tokyo", boss: "The Train Conductor", focus: "Subway navigation and politeness levels." }
     };
     
@@ -184,7 +185,7 @@ export default function Dashboard({ setView, userProfile, onSelectLesson }) {
                     Boss Scenario <span className="text-slate-600 mx-1">|</span> - {module.boss.cost} Zaps
                   </div>
                   <h3 className="text-2xl font-black text-white mb-2">{module.boss.title}</h3>
-                  <p className="text-slate-400 text-sm">Persona: <span className="text-slate-200 font-medium">{module.boss.persona}</span> — {module.boss.focus}</p>
+                  <p className="text-slate-400 text-sm">Persona: <span className="text-slate-200 font-medium">{module.boss.persona}</span>  {module.boss.focus}</p>
                 </div>
               </div>
             </div>
@@ -192,13 +193,21 @@ export default function Dashboard({ setView, userProfile, onSelectLesson }) {
         ))}
       </main>
 
-      {/* Floating Bottom Nav */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-full flex items-center gap-8 shadow-2xl z-50">
-        <button onClick={() => setView('dashboard')} className="text-cyan-400 flex flex-col items-center gap-1"><Map size={24} /><span className="text-[10px] font-bold uppercase tracking-widest">Learn</span></button>
-        <button onClick={() => setView('arcade')} className="text-slate-500 hover:text-cyan-400 transition flex flex-col items-center gap-1"><Gamepad2 size={24} /><span className="text-[10px] font-bold uppercase tracking-widest">Arcade</span></button>
-        <button onClick={() => setView('vocab')} className="text-slate-500 hover:text-cyan-400 transition flex flex-col items-center gap-1"><BookOpen size={24} /><span className="text-[10px] font-bold uppercase tracking-widest">Vault</span></button>
-      </div>
-
+		    {/* Floating Bottom Nav */}
+            <div>
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-full flex items-center gap-8 shadow-2xl z-50">
+                <button onClick={() => setView('lesson_path')} className="text-cyan-400 flex flex-col items-center gap-1">
+    				<Map size={24} />
+                    <span className="text-[10px] font-bold uppercase tracking-widest">Learn</span>
+                   </button>
+                   <button onClick={() => setView('arcade')} className="text-slate-500 hover:text-cyan-400 transition flex flex-col items-center gap-1">
+                    <Gamepad2 size={24} /><span className="text-[10px] font-bold uppercase tracking-widest">Arcade</span>
+                   </button>
+                   <button onClick={() => setView('vocab')} className="text-slate-500 hover:text-cyan-400 transition flex flex-col items-center gap-1">
+                    <BookOpen size={24} /><span className="text-[10px] font-bold uppercase tracking-widest">Vault</span>
+                   </button>
+        	</div>
+        </div>
     </div>
-  );
+	);
 }
