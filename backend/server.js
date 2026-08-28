@@ -3,11 +3,15 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
 import Stripe from 'stripe';
+import fs from 'fs';
+import authRoutes from './routes/authRoutes.js';
+import conversationRoutes from './routes/conversationRoutes.js';
+import tutorRoutes from './routes/tutorRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
-import fs from 'fs';
+import { autonomaHandler } from './autonoma.js';
 
-console.log("--> [1/5] Booting up Vera Backend...");
 dotenv.config();
 
 console.log("--> [2/5] Initializing Firebase Admin VIP Access...");
@@ -65,6 +69,15 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), async (request
 
 // Use standard JSON for all other routes
 app.use(express.json());
+
+// --- PostgreSQL API (auth, conversations, tutor, admin) ---
+app.use('/auth', authRoutes);
+app.use('/conversations', conversationRoutes);
+app.use('/tutor', tutorRoutes);
+app.use('/admin', adminRoutes);
+
+// --- Autonoma test-data endpoint ---
+app.use('/api/autonoma', autonomaHandler);
 
 // --- OPENROUTER CONFIGURATION ---
 const openai = new OpenAI({

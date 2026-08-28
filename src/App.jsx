@@ -14,6 +14,7 @@ import StructuredLesson from './Components/StructuredLesson';
 import Store from './Components/Store';
 import Arcade from './Components/Arcade';
 import VocabVault from './Components/VocabVault';
+import LessonPath from './Components/LessonPath';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAFmqai9TJO2XvuPNCagP-Fk5QWvk3QjLo",
@@ -148,6 +149,8 @@ export default function App() {
         return <Arcade setView={setView} userProfile={userProfile} onStartMatch={(match) => { setCurrentLesson(match); setView('tutor'); }} />;
       case 'vocab':
         return <VocabVault setView={setView} userProfile={userProfile} />;
+      case 'lesson_path':
+ 		 return <LessonPath setView={setView} userProfile={userProfile} />;
       default:
         return <div className="min-h-screen bg-[#020617] p-10 text-white">404: Not Found <button onClick={() => setView('dashboard')} className="ml-4 underline text-cyan-400">Go Back</button></div>;
     }

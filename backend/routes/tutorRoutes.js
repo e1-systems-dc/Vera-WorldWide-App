@@ -8,10 +8,18 @@ import OpenAI from "openai";
 
 const router = express.Router();
 
-// Initialize OpenAI (or replace with your provider)
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let client;
+function getOpenAIClient() {
+  if (!client) {
+    client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY || process.env.OPENROUTER_API_KEY || "sk-mock",
+      baseURL: process.env.OPENROUTER_API_KEY
+        ? "https://openrouter.ai/api/v1"
+        : undefined,
+    });
+  }
+  return client;
+}
 
 router.post("/", authMiddleware, requirePaid, async (req, res) => {
   try {
@@ -44,6 +52,8 @@ Session mode: ${sessionMode}
 Practice mode: ${practiceMode}
 Coach instructions: ${language.coachPrompt}
     `;
+
+    const client = getOpenAIClient();
 
     // Call AI
     const completion = await client.chat.completions.create({
